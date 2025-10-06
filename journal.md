@@ -40,9 +40,11 @@ $\rightarrow$ Caractères de remplacement
 - `cp` : copier
 - `mv` : (*move*) déplacer
 - `rm` : (*remove*) supprimer
-- `rmdir` : (*makde directory*) créer un dossier
+    - `-r` : supprime un dossier entier
+- `rmdir` : (*remove directory*) supprime un dossier vide
 - `touch` : crée un fichier (effet de bord bien pratique)
 - `zip` : compresser une archive $\text{zip}$
+    - `-r` : compresse un dossier entier
 - `unzip` : décompresser une archive $\text{zip}$
 - `tar` : manipuler les archives $\text{tar}$
 

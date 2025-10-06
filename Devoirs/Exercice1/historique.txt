@@ -1,0 +1,277 @@
+  374  mkdir Exercice1
+  375  ls
+  376  cd Exercice1/
+  377  ls
+  378  wget 'http://plurital.org/ppe1/seance1/archive-13.zip
+
+  379  wget 'http://plurital.org/ppe1/seance1/archive-13.zip
+  380  wget http://plurital.org/ppe1/seance1/archive-13.zip
+  381  ls
+  382  unzip --help
+  383  unzip archive-13.zip 
+  384  ls
+  385  tree
+  386  tree | head 10
+  387  tree | head
+  388  ls | grep "*.txt"
+  389  ls | grep ".txt"
+  390  mkdir txt
+  391  mkdir ann
+  392  mkdir img
+  393  mkdir docs
+  394  ls --help
+  395  mv --help
+  396  ls | grep ".txt" | grep "2016"
+  397  ls
+  398  tree
+  399  mv --help
+  400  mv *.doc* doc/
+  401  ls doc
+  402  ls
+  403  mv *.doc* docs/
+  404  ls doc
+  405  ls docs
+  406  mv *.doc docs/
+  407  mv *.jpg img/
+  408  ls img
+  409  mv *.txt txt/
+  410  ls
+  411  mv *.png img/
+  412  mv *.svg img/
+  413  ls
+  414  mv *.ann ann/
+  415  ls
+  416  mv *.JPG img/
+  417  ls
+  418  mv *.jpeg img/
+  419  mv *.gif img/
+  420  ls
+  421  mv *.PNG img/
+  422  ls
+  423  mv *.GIF img/
+  424  ls
+  425  mv Energie* docs/
+  426  ls
+  427  mv 13-Taipei_Taishin_Mars.webp img
+  428  ls
+  429  cd ann
+  430  mkdir 2016
+  431  ls | head
+  432  mkdir 01 2016/
+  433  cd 2016/
+  434  mkdir 01
+  435  mkdir --help
+  436  mkdir 02
+  437  mkdir 03
+  438  mkdir 04
+  439  mkdir 05
+  440  mkdir 06
+  441  mkdir 07
+  442  mkdir 08
+  443  mkdir 09
+  444  mkdir 10
+  445  mkdir 11
+  446  mkdir 12
+  447  cd ../
+  448  mv 2016_01* 2016/01
+  449  mv 2016_02* 2016/02
+  450  mv 2016_03* 2016/03
+  451  mv 2016_04* 2016/04
+  452  mv 2016_05* 2016/05
+  453  mv 2016_06* 2016/06
+  454  mv 2016_07* 2016/07
+  455  mv 2016_08* 2016/08
+  456  mv 2016_09* 2016/09
+  457  mv 2016_10* 2016/10
+  458  mv 2016_11* 2016/11
+  459  mv 2016_12* 2016/12
+  460  ls | head
+  461  mkdir 2017
+  462  mkdir --help
+  463  mkdir -p -m 2017/01
+  464  cd 2017
+  465  mkdir 01
+  466  mkdir 02
+  467  mkdir 03
+  468  mkdir 04
+  469  mkdir 05
+  470  mkdir 06
+  471  mkdir 07
+  472  mkdir 08
+  473  mkdir 09
+  474  mkdir 10
+  475  mkdir 11
+  476  mkdir 12
+  477  cd ../
+  478  ls 2018*
+  479  ls 2019*
+  480  mkdir 2018
+  481  cd 2018
+  482  mkdir 12
+  483  mkdir 11
+  484  mkdir 10
+  485  mkdir 09
+  486  mkdir 08
+  487  mkdir 07
+  488  mkdir 06
+  489  mkdir 05
+  490  mkdir 04
+  491  mkdir 03
+  492  mkdir 02
+  493  mkdir 01
+  494  cd ../
+  495  mv 2017_01* 2017/
+  496  mv 2018_01* 2018/01
+  497  mv 2018_02* 2018/02
+  498  mv 2017_02* 2017/02
+  499  mv 2017_03* 2017/03
+  500  mv 2018_03* 2018/03
+  501  mv 2018_04* 2018/04
+  502  mv 2017_04* 2017/04
+  503  mv 2017_05* 2017/05
+  504  mv 2018_05* 2018/05
+  505  mv 2018_06* 2018/06
+  506  mv 2017_06* 2017/06
+  507  mv 2017_07* 2017/07
+  508  mv 2018_07* 2018/07
+  509  mv 2018_08* 2018/08
+  510  mv 2017_08* 2017/08
+  511  mv 2017_09* 2017/09
+  512  mv 2018_09* 2018/09
+  513  mv 2018_10* 2018/10
+  514  mv 2017_10* 2017/10
+  515  mv 2017_11* 2017/11
+  516  mv 2018_11* 2018/11
+  517  mv 2018_12* 2018/12
+  518  mv 2017_12* 2017/12
+  519  ls
+  520  ls 01
+  521  rm 01
+  522  rm --help
+  523  rm -r 01
+  524  ls
+  525  cd 2017
+  526  tree
+  527  mv *_01_* 01
+  528  ls
+  529  tree
+  530  cd ../
+  531  ls
+  532  cd ..:
+  533  cd ../
+  534  ls
+  535  cd img
+  536  ls | head
+  537  mkdir Paris
+  538  mv *Paris* Paris/
+  539  mv *Paris*.* Paris/
+  540  ls
+  541  ls Paris/
+  542  ls
+  543  mkdir Tokyo
+  544  mv *Tokyo*.* Tokyo/
+  545  mkdir Berlin
+  546  mv *Berlin*.* Berlin/
+  547  mkdir Taipei
+  548  mv *Taipei*.* Taipei/
+  549  mkdir Washington
+  550  mv *Washington*.* Washington/
+  551  mkdir Romero
+  552  mv *Romero*.* Romero/
+  553  ls
+  554  mkdir Rome
+  555  mv *Rome*.* Rome/
+  556  mkdir Kyoto
+  557  mv *Kyoto*.* Kyoto/
+  558  ls
+  559  cd ..:
+  560  cd ../
+  561  cd ann/
+  562  ls
+  563  cd ../txt/
+  564  ls
+  565  mkdir 2016
+  566  mkdir 2017
+  567  mkdir 2018
+  568  cd 2016
+  569  mkdir 01
+  570  mkdir 02
+  571  mkdir 03
+  572  mkdir 04
+  573  mkdir 05
+  574  mkdir 06
+  575  mkdir 07
+  576  mkdir 08
+  577  mkdir 09
+  578  mkdir 10
+  579  mkdir 11
+  580  mkdir 12
+  581  cd ../2017/
+  582  mkdir 12
+  583  mkdir 11
+  584  mkdir 10
+  585  mkdir 09
+  586  mkdir 08
+  587  mkdir 07
+  588  mkdir 06
+  589  mkdir 05
+  590  mkdir 04
+  591  mkdir 03
+  592  mkdir 02
+  593  mkdir 01
+  594  cd ../2018/
+  595  mkdir 01
+  596  mkdir 02
+  597  mkdir 03
+  598  mkdir 04
+  599  mkdir 05
+  600  mkdir 06
+  601  mkdir 07
+  602  mkdir 08
+  603  mkdir 09
+  604  mkdir 10
+  605  mkdir 11
+  606  mkdir 12
+  607  cd ../
+  608  ls | head
+  609  mv 2016_01* 2016/01/
+  610  mv 2017_01* 201/01/
+  611  mv 2017_01* 2017/01/
+  612  mv 2018_01* 2018/01/
+  613  mv 2018_02* 2018/02/
+  614  mv 2017_02* 2017/02/
+  615  mv 2016_02* 2016/02/
+  616  mv 2016_03* 2016/03/
+  617  mv 2017_03* 2017/03/
+  618  mv 2018_03* 2018/03/
+  619  mv 2018_04* 2018/04/
+  620  mv 2017_04* 2017/04/
+  621  mv 2016_04* 2016/04/
+  622  mv 2016_05* 2016/05/
+  623  mv 2017_05* 2017/05/
+  624  mv 2018_05* 2018/05/
+  625  mv 2018_06* 2018/06/
+  626  mv 2017_06* 2017/06/
+  627  mv 2016_06* 2016/06/
+  628  mv 2016_07* 2016/07/
+  629  mv 2017_07* 2017/07/
+  630  mv 2018_07* 2018/07/
+  631  mv 2018_08* 2018/08/
+  632  mv 2017_08* 2017/08/
+  633  mv 2016_08* 2016/08/
+  634  mv 2016_09* 2016/09/
+  635  mv 2017_09* 2017/09/
+  636  mv 2018_09* 2018/09/
+  637  mv 2018_10* 2018/10/
+  638  mv 2017_10* 2017/10/
+  639  mv 2016_10* 2016/10/
+  640  mv 2016_11* 2016/11/
+  641  mv 2017_11* 2017/11/
+  642  mv 2018_11* 2018/11/
+  643  mv 2018_12* 2018/12/
+  644  mv 2017_12* 2017/12/
+  645  mv 2016_12* 2016/12/
+  646  ls
+  647  ls 2016/ | head
+  648  ls 2016/01 | head
+  649  history
