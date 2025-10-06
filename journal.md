@@ -26,8 +26,8 @@ $\rightarrow$ Caractères de remplacement
 
 | Notions | Description | Acquis ou non |
 | ----- | --- | ---- |
-| ? | Remplace n'importe quel caractère | Acquis |
-| * | Remplace n'importe quelle suite de caractère | Acquis |
+| `?` | Remplace n'importe quel caractère | Acquis |
+| `*` | Remplace n'importe quelle suite de caractère | Acquis |
 
 ### Les commandes
 #### Se promener dans l'arbre
