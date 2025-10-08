@@ -52,10 +52,7 @@ $\rightarrow$ Caractères de remplacement
 - `file` : donne des information sur le type de fichier
 - `cat` : lit le contenu d'un ou plusieurs fichiers
 - `head` : lit le début d'un fichier
-- `tail` : lit la fin d'un fichier
-- `cut` : sélectionne une ou plusieurs colonnes dans un fichier tabulé
 - `less` : lecteur (interactif)
-- `echo` : affiche dans la sortie du terminal
 - `wc` : permet de compter (byte, lettre, mot...)
 
 #### Autres
@@ -93,3 +90,38 @@ La plupart des commandes ont une option `--help` qui permet d'obtenir une dercri
         - `git push origin --delete <nom-tag>` : suppression sur le dépôt
 - `git push origin --tags` : envoyer tous les tags
 - `git push origin <nom_tag>` : envoyer un tag spécifique
+
+
+## Commandes bash 
+> 08/10/2025
+### Flux d'entrées-sorties
+#### Généralités
+$\rightarrow$ `0 stdin` : l'entrée standard (clavier)
+$\rightarrow$ `1 stdout` : la sortie standard (écran)
+$\rightarrow$ `2 stderr` : la sortie d'erreurs standard (écran)
+$\rightarrow$ `Ctrl + D` : fin de saisie 
+
+#### Redirection
+| Commande | Description |
+| --- | --- |
+| `<` | Remplace le clavier par le contenue d'un fichier |
+| `>` ou `1>` | Ecrit **stdout** dans un fichier |
+| `2>` | Ecrit **stderr** dans un fichier |
+| `&>` | Ecrit **stdout** et **stderr** dans un fichier |
+| `cmd1 | cmd2` | la sortie standard (**stdout**) de `cmd1` est envoyée en **stdin** de `cmd2`|
+| `cmd1 |& cmd2` | les sorties **stdout** et **stderr** de `cmd1`sont toutes deux redirigées vers **stdin** de `cmd2` |
+
+#### Autres commandes
+| Commande | Description |
+| --- | --- |
+| `grep` | recherche de motifs dans l'entrée (fichiers) |
+| `sort` | trier des lignes |
+| `uniq` | supprimer les lignes qui se répètent |
+| `echo` | affiche un texte (pour formater les résultats) |
+| `cut` | selectionne des colonnes d'un fichier tabulaire |
+| `tail` | ne garde que les dernières lignes d'un flux ou d'un fichier |
+
+### Script bash
+- `#` : ajout des commentaires
+- `#!/usr/bin/bash` : ajout *shebang*
+- `chmod` + `x` : rend le fichier exécutable
