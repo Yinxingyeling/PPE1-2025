@@ -108,20 +108,24 @@ $\rightarrow$ `Ctrl + D` : fin de saisie
 | `>` ou `1>` | Ecrit **stdout** dans un fichier |
 | `2>` | Ecrit **stderr** dans un fichier |
 | `&>` | Ecrit **stdout** et **stderr** dans un fichier |
-| `cmd1 | cmd2` | la sortie standard (**stdout**) de `cmd1` est envoyée en **stdin** de `cmd2`|
-| `cmd1 |& cmd2` | les sorties **stdout** et **stderr** de `cmd1`sont toutes deux redirigées vers **stdin** de `cmd2` |
+| `cmd1 \| cmd2` | la sortie standard (**stdout**) de `cmd1` est envoyée en **stdin** de `cmd2`|
+| `cmd1 \|& cmd2` | les sorties **stdout** et **stderr** de `cmd1`sont toutes deux redirigées vers **stdin** de `cmd2` |
 
 #### Autres commandes
-| Commande | Description |
-| --- | --- |
-| `grep` | recherche de motifs dans l'entrée (fichiers) |
-| `sort` | trier des lignes |
-| `uniq` | supprimer les lignes qui se répètent |
-| `echo` | affiche un texte (pour formater les résultats) |
-| `cut` | selectionne des colonnes d'un fichier tabulaire |
-| `tail` | ne garde que les dernières lignes d'un flux ou d'un fichier |
+| Commande | Description | Option |
+| --- | --- | --- |
+| `grep` | recherche de motifs dans l'entrée (fichiers) |  |
+| `sort` | trier des lignes | `-k<n>` : sélectionne la **n** ième colonne  <br> `-r` : trie en décroissant |
+| `uniq` | supprimer les lignes qui se répètent | `-c` : compte le nombre de répétition |
+| `echo` | affiche un texte (pour formater les résultats) | | 
+| `cut` | selectionne des colonnes d'un fichier tabulaire | `-f<n>` : n'affiche que la **n** ième colonne <br> `-d ""` : délimitation des colonnes | 
+| `tail` | ne garde que les dernières lignes d'un flux ou d'un fichier | | 
+| `head` | n'affiche que les 10 premières lignes | `-n<n>` : affiche les **n** premières lignes |
+| `wc` | compte les caractères | `-l` : compte nbr de lignes |
 
 ### Script bash
 - `#` : ajout des commentaires
 - `#!/usr/bin/bash` : ajout *shebang*
 - `chmod` + `x` : rend le fichier exécutable
+- `VAR=$1` : input par user
+    - "$VAR" : appel de la variable dans les programme
