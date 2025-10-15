@@ -78,6 +78,8 @@ La plupart des commandes ont une option `--help` qui permet d'obtenir une dercri
 |`git status` | Vérification des modifications |
 | `git log` | Voir les derniers *commit* | 
 
+$\rightarrow$ `git commit -amend -m` pour changer le dernier commit
+
 * Analyse d'utilisation de `git tag`
 
 ### Utilisation de `tag`
@@ -97,8 +99,11 @@ La plupart des commandes ont une option `--help` qui permet d'obtenir une dercri
 ### Flux d'entrées-sorties
 #### Généralités
 $\rightarrow$ `0 stdin` : l'entrée standard (clavier)
+
 $\rightarrow$ `1 stdout` : la sortie standard (écran)
+
 $\rightarrow$ `2 stderr` : la sortie d'erreurs standard (écran)
+
 $\rightarrow$ `Ctrl + D` : fin de saisie 
 
 #### Redirection
@@ -128,4 +133,14 @@ $\rightarrow$ `Ctrl + D` : fin de saisie
 - `#!/usr/bin/bash` : ajout *shebang*
 - `chmod` + `x` : rend le fichier exécutable
 - `VAR=$1` : input par user
-    - "$VAR" : appel de la variable dans les programme
+    - `"$VAR"` : appel de la variable dans les programme
+
+### Difficultés rencontrés lors du TP1
+| Difficultés | Solutions | Réponse |
+| --- | --- | --- |
+| Doublons des Locations même après trie | Changement de place des commande | `sort \| uniq \| cut` $\rightarrow$ `cut \| sort \| uniq` | 
+| Utilisation de `head` pour avoir plus ou moins de 10 lignes | Consultation du manuel via `head --help`| `head -n<nombre>` | 
+| Trier selon la partie Location | Consultation du manuel via `sort --help`| `sort -k<n_ième_colonne>`| 
+| Trier de manière décroissant (le plus grand nombre en premier) | Consultation du manuel | `sort -r` |
+| Sélectionner une colonne spécifique pour l'afficher dans la sortie standard | Consultation du manuel | `cut -f<n_ieme_colonne>` |
+| Commande similaire à `input` (Python) | Consultation des diapos du cours | `VAR=$1` |
