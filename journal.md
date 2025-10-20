@@ -144,3 +144,159 @@ $\rightarrow$ `Ctrl + D` : fin de saisie
 | Trier de manière décroissant (le plus grand nombre en premier) | Consultation du manuel | `sort -r` |
 | Sélectionner une colonne spécifique pour l'afficher dans la sortie standard | Consultation du manuel | `cut -f<n_ieme_colonne>` |
 | Commande similaire à `input` (Python) | Consultation des diapos du cours | `VAR=$1` |
+
+### Instructions de contrôle
+> 15/10/2025
+
+```bash
+if [ condition ] | Conditions | Description | Utilisation | 
+| --- | --- | --- |
+then 
+    echo "La condition est valide"
+else 
+    echo "La condition n'est pas valide"
+fi
+```
+$\rightarrow$ Chemins
+
+| Conditions | Description |
+| --- | --- |
+| `-f fichier` | vrai si le fichier existe |
+| `-d dossier` | vrai si le dossier existe |
+| `-s fichier` | vrai si le fichier existe et n'est pas vide |
+
+$\rightarrow$ Chaînes de caractères
+
+| Conditions | Description | Utilisation | 
+| --- | --- | --- |
+| `=` | tester si deux chaînes sont identiques | | 
+| `!=` | tester si deux chaînes sont différentes | | 
+| `<` ou `>` | déterminer si une chaîne est **avant** ou **après** une autre dans l'ordre alphabétique | | 
+| `-n chaine` | vrai si la chaîne n'est **pas vide** | | 
+| `-z chaine` | vrai si la chaîne est **vide** (ex: argument non fourni) | | 
+
+$\rightarrow$ Entiers
+
+| Conditions | Description | Utilisation | 
+| --- | --- | --- |
+| `a -eq b` | si `a` est égal à `b` (**eq**ual) | 
+| `a -ne b` | si `a` est différent de `b` (**n**ot **e**qual) | 
+| `a -lt b` | si `a` est plus petit que `b` (**l**ess **t**han) | 
+| `a -gt b` | si `a` est plus grand que `b` (**g**reater **t**han) | 
+| `a -le b` | si `a` est inférieur ou égal à `b` | 
+| `a -ge b` | si `a` est supérieur ou égal à `b` |
+| `[[ ]]` | permet d'utiliser des expressiions régulières | `[[ $1 =~ bon(jou|soir) ]]` |
+
+
+<div style="border: 4px solid red; padding: 8px;">
+<strong>⚠️ ATTENTION :</strong> Vérifier que toutes les conditions sont réunis pour que le traitement se passe bien avant de lancer le programme.
+</div>
+
+### Les boucles
+#### Boucle FOR
+
+```bash
+N=0
+for ELEMENT in a b c d e
+do
+    N=$(expr $N + 1)
+    echo "Le $N ieme élément est $ELEMENT"
+done
+```
+
+- `expr` : commande calculatrice
+- Une commande pour générer la liste d'élements $\rightarrow$ Test
+
+#### Boucle WHILE
+
+```bash
+while [ condition ];
+do
+    echo "Je continue à boucler";
+done
+```
+
+- Même condition que **IF**
+- `read` : souvent utilisé avec 
+- Attention au boucle infinie ! (CTRL-C = arrêt brutal)
+
+$\rightarrow$ Analyse de l'exemple du cours
+
+### Exemple complet en bash
+```bash
+#!/usr/bin/bash
+
+if [ $# -ne 1 ]
+then
+    echo "Ce programme demande un argument"
+        exit
+fi
+
+FICHIER_URLS=$1
+OK=0
+NOK=0
+
+while read -r LINE ;
+do
+    echo "La ligne : $LINE"
+    if [[ $LINE =~ ^https?:// ]]
+    then
+        echo "ressemble à une URL valide"
+        OK=$(expr $OK + 1)
+    else
+        echo "Ne ressemble pas à une URL valide"
+        NOK=$(expr $NOK + 1)
+    fi
+done < $FICHIER_URLS
+
+echo "$OK URLs et $NOK lignes douteuses"
+```
+
+- `if` si :
+    - `$#` : nombre d'argument donné par l'usr
+    - `-ne 1` : n'est pas égal à 1
+    - Alors : 
+        - `echo` : affiche la phrase dans la sortie standart
+        - `exit` : arrête le programme
+- `FICHIER_URLS` prend le premier argument que l'usr donne
+- `OK` et `NOK` sont des entiers
+- `while` quand :
+    - `read -r` : lit la ligne d'entrée sans prendre en considération les `\` comme caractère spécial
+    - `echo` : affiche ce qui est stocké dans la variable `$LINE`
+    - `if` si :
+        - `$LINE` contient une expression commençant par `https`(avec ou sans -s)`://`
+        - Alors :
+            - `echo` : affiche la phrase
+            - change la variable `OK` $\rightarrow$ (`expr`) calcul `$OK + 1` (= 0+1)
+        - Sinon : 
+            - affiche la phrase
+            - change la variable `NOK` en calculant `NOK + 1`
+    - `done < $FICHIER_URLS` : redonne ce qui est dans la variable dans la boucle
+- `echo` : affiche (nbr dans) `$OK` URLs et (nbr dans) `$NOK` lignes douteuses
+
+### Difficultés ou application TP1 (suite)
+> 16/10/2025 
+>
+> Exercice 3 : Tests et validation des arguments
+
+* `read` : lire ce que l'usr écrit
+    * `-r` : n'interprète pas les backslash (\\)
+    * `-p` : demande une saisie à l'usr
+        * `read -rp "Argument" <VARIABLE>`
+* `if [ "$REP" = "O" ]` un test selon la réponse donnée par l'usr
+    * Deux cas possible : 
+        1. **usr est dans le bon chemin** : le script et les fichiers a traité ensemble, alors pas besoin d'utiliser la variable `DATADIR`
+        2. usr n'est pas au bonne endroit : demande à l'usr de donner les éléments manquant pour ne pas avoir à sortir du script et le relancer
+* sinon lance le script normalement
+
+> Explication du script `comptes.sh`
+* Une variable qui contient le chemin absolu de là où s'exécute le script (`$DIRECT`)
+* Une variable qui garde la première année, elle sera itéré plus tard
+* (**WHILE**) quand l'année est plus petit ou égal à 2018
+    * (**IF**) Utilisation de `if [ -e "$DIRECT" ]` : permettant de chercher si les fichiers ou dossiers existent bien à cet emplacement ($DIRECT)
+        * Affiche la phrase avec `$COUNT` qui change pour chaque année
+        * `cat` : affiche tous les fichiers terminant par `.ann` aux emplacements demandés
+        * `grep` : cherche tous les motifs "Location"
+        * `wc -l` : compte et n'affiche seulement les nombres de lignes 
+    * (**ELSE**) sinon : affiche la phrase et arrête le script
+    * (en fin **WHILE**) : ajoute 1 à la variable `$COUNT` (2016 $\rightarrow$ 2017)
