@@ -300,3 +300,64 @@ echo "$OK URLs et $NOK lignes douteuses"
         * `wc -l` : compte et n'affiche seulement les nombres de lignes 
     * (**ELSE**) sinon : affiche la phrase et arrête le script
     * (en fin **WHILE**) : ajoute 1 à la variable `$COUNT` (2016 $\rightarrow$ 2017)
+
+## Web : HTML, HTPP, récupérer des pages
+
+**HTML** (**H**yper**T**ext **M**arkup **L**anguage) est un langage de balisage pour représenter des pages web.
+- structure l'information
+- enrichie le texte
+- donne des indications pour interagir avec l'utilisateur
+
+```html
+<html>
+    <head>
+        <title>Vous Etes Perdu ?</title>
+    </head>
+        <body>
+            <h1>Perdu sur l’Internet ?</h1>
+            <h2>Pas de panique, on va vous aider</h2>
+            <strong><pre> * <—– vous &ecirc;tes ici</pre></strong>
+    </body>
+ </html>
+```
+
+Utilisation PPE : 
+* retirer tout le métatexte de pages web pour en extraire le contenu textuel
+* analyser ce contenu textuel pour en déduire un usage (linguistique de corpus)
+* créer nos propres pages web pour présenter les procédés et résultats
+
+**HTTP** (**H**yper**T**ext **T**ransfer **P**rotocol) est un protocole créé pour communiquer sur le WWW.
+
+Code de statut : 
+* 1xx : information
+* 200 : réussite
+* 3xx : redirection
+* 4xx : erreurs du client
+* 5xx : erreurs du serveur
+
+### Lynx : navigateur web en terminal
+
+1. Récupérer le contenu textuel d'une page pour l'afficher (sans navigation)
+
+> `-dump`
+
+2. Retirer la liste des liens d'une page à l'affichage
+
+> `-nolist`
+
+### wget et cURL
+
+`wget` et `cURL` sont deux commandes qui permettent de récupérer des pages web sans passer par un navigateur
+- `wget` écrit dans un fichier
+- `cURL` écrit dans le terminal
+
+| Option `curl` | Détails d'utilisation |
+| --- | --- | 
+| `-i` | Donne les informations sur l'interaction avec le serveur |
+| `-L` | suit les redirections |
+| `-o <fichier>` | indique un `<fichier>` de sortie |
+| `-I` | équivalent à l'option `head`|
+| `s` |  |
+| `w` ||
+
+## Mini-projet 1 : difficultés et applications
