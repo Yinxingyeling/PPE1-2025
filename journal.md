@@ -357,7 +357,68 @@ Code de statut :
 | `-L` | suit les redirections |
 | `-o <fichier>` | indique un `<fichier>` de sortie |
 | `-I` | équivalent à l'option `head`|
-| `s` |  |
-| `w` ||
+| `-s` | Met sous silence |
+| `-w` | Affiche les informations sur la sortie standard après un transfert |
 
 ## Mini-projet 1 : difficultés et applications
+
+### Lire les lignes d'un fichier en bash
+
+#### Exercice 1 
+
+1. Pourquoi ne pas utiliser `cat` ?
+2. Comment transformer `"urls/fr.txt"` en paramètre du script ?
+    1. Valider l'argument : ajouter le code si nécessaire pour s'assurer qu'on donne bien un argument au script, sinon on s'arrête
+3. Comment afficher le numéro de ligne avant chaque URL (sur la même ligne) ? (Bien séparer par des tabulations)
+
+#### Application
+
+1. `cat` permet d'afficher le contenu d'un fichier (déjà existant), alors que `echo` permet d'afficher du texte
+
+| Commandes | Options | Explications |
+| --- | --- | --- | 
+| `URL=$#` | | Garde dans la variable l'argument que l'usr donne |
+| `if [ -n "$URL" ]` | `-n` | Teste si `$URL` n'est pas vide |
+| `COUNT=0` <br> $\rightarrow$ `COUNT=$(expr "$COUNT" + 1)` | | Variable qui compte les lignes (utiliser avec la boucle `while`) <br> A chaque entrée de la boucle, compte +1 à `$COUNT` |
+| `echo` | `-e "\t"` | Affichage qui comprend une séparation par tabulation |  
+
+
+### Récuperer les métadonnées de collecte
+
+#### Exercice 2
+
+Ajout d'informations à chaque ligne, séparées par des tabulations : 
+1. Le code HTTP de réponse de la requête
+    1. Les erreurs peuvent être corrigées
+2. L'encodage de la page si elle est présente
+3. Le nombre de mot de la page
+
+#### Application 
+
+| Commandes | Options | Explications |
+| --- | --- | --- |
+| `REHTTP` ||
+| `curl` | `-s` <br> `-o /dev/null` <br> `-w "%{http_code}"` | Mets sous silence la barre de progression et les messages d'erreur <br> Ignore le contenue et le place dans le trou noir du système <br> Affiche seulement le code HTTP final | 
+| `ENCODAGE` |||
+| `cut` | `-d "="` | L'encodage de la page étant présenté sous cette forme : *meta-charset=UTF-8*, la délimitation par *=* permet de collecter seulement le nom de l'encodage (ce qui est intéressant) |
+| `WORD`| | | 
+|`lynx` | `-dump` | Affiche le contenu de l'URL avec sa mise en page dans la sortie standard | 
+| `wc` | `-w` | Compte tous les mots |
+| `>>` || Envoie le contenu dans le fichier sans écrases son contenu initial |
+
+
+#### Difficultés 
+
+- Amélioration pour un moyen plus propre et plus efficace d'afficher le code HTTP
+> `curl -si ${line} | grep "HTTP" | cut -d " " -f2` $\rightarrow$ `curl -s -o /dev/null -w %{http_code}` : recherche dans le manuel de ***curl*** et internet.
+- Dans `curl -i`, l'encodage se trouve dans la partie ***content_type*** : utilisation de `-w {content_type}` pour une recherche plus rapide de l'ordinateur. 
+> `curl ${line} | grep meta-charset` $\rightarrow$ `curl -s -o /dev/null -w "%{content_type}" "${line}" | cut -d '=' -f2`
+
+
+### Amélioration du script
+
+| Commandes | Options | Explications |
+| --- | --- | --- | 
+| `$OUTPUT` | | Variable qui contient le chemin de sortie des résultats de l'exercie (pour ne pas écrire trop de fois le chemin complet) | 
+| `echo` | `-e` ... `> $OUTPUT` | Interprète les séquences avec backslash (\n, \t...) <br> Range le résultat dans `$OUTPUT` en écrasant à chaque fois | 
+| `sleep` | | Le programme fait une pause (compte en seconde) <br> Contourne l'erreur 429 (trop de requête sans pause) |
