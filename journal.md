@@ -302,6 +302,7 @@ echo "$OK URLs et $NOK lignes douteuses"
     * (en fin **WHILE**) : ajoute 1 à la variable `$COUNT` (2016 $\rightarrow$ 2017)
 
 ## Web : HTML, HTPP, récupérer des pages
+> 24/10/2025
 
 **HTML** (**H**yper**T**ext **M**arkup **L**anguage) est un langage de balisage pour représenter des pages web.
 - structure l'information
@@ -422,3 +423,54 @@ Ajout d'informations à chaque ligne, séparées par des tabulations :
 | `$OUTPUT` | | Variable qui contient le chemin de sortie des résultats de l'exercie (pour ne pas écrire trop de fois le chemin complet) | 
 | `echo` | `-e` ... `> $OUTPUT` | Interprète les séquences avec backslash (\n, \t...) <br> Range le résultat dans `$OUTPUT` en écrasant à chaque fois | 
 | `sleep` | | Le programme fait une pause (compte en seconde) <br> Contourne l'erreur 429 (trop de requête sans pause) |
+
+## HTML : Faire un tableau
+> Cours du 05/11/2025
+>
+> 08/11/2025
+
+```html
+<html>
+    <head>
+        [...]
+        <meta charset="UTF-8"/> <!-- Annonce l'encodage de la page -->
+        [...]
+    </head>
+    <body>
+        <h1>Titre</1>
+        <p>Texte brut</p>
+
+        <table> <!-- début d'un tableau -->
+            <tr><!-- Un ligne dans le tableau -->
+                <th>Une cellule d'entête</th>
+                <th> Une deuxième cellule d'entête</th>
+            </tr>
+            <tr><td>Une cellule classique</td>
+                <td>Une autre cellule classique</td>
+            </tr>
+        </table> <!-- On ferme le tableau -->
+    </body>
+</html>
+```
+Documentation HTML
+-
+* <a href="https://www.w3schools.com/html/html_head.asp">Documentation d'entête HTML</a>
+* <a href="https://www.w3schools.com/html/html_charset.asp">Documentation charset HTML</a>
+
+## Mini-projet 2 : Transformer le fichier TSV en HTML
+
+### Changement apporté au programme pour transformer le fichier TSV en HTML
+
+- `$OUTFILE` : changer le format du fichier de sauvegarde `.tsv` $\rightarrow$ `.html`
+- Ajout des balises html dans le fichier de sortie avec `echo -e` pour avoir les tabulations (`\t`) et saut de ligne (`\n`)
+    - Les premières lignes de balises du fichier (commencement) sont sauvegardé en écrasant ce qu'il y a avant $\rightarrow$ pas de répétition au lancement du programme à plusieurs reprise
+- Un titre avant le tableau avec `<h1>...</h1>`
+- Ajoute des balises `<table>` pour avoir la structure du tableau
+- Entête du tableau avec `<tr><th>...</th></tr>`
+- Remplir les cellules de chaque ligne dans la boucle while après collecte des toutes les données nécessaires (ligne 55)
+- Fin de boucle, ajout des balises html fermantes
+
+### Problèmes rencontrés et améliorations
+- Affichage des variables incorrect : utilisation obligatoire des `""` et non `''`.
+- Un meilleur visuel du tableau : 
+    - ajout de la fonction `border=1` dans la balise `table`

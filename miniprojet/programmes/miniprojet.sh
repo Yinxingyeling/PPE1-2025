@@ -6,7 +6,7 @@ OUTFILE="tableaux/tableau-fr.html" # Fichier de sauvegarde
 
 # Construction du fichier html
 echo -e '<html>\n\t<head>\n\t\t<meta charset="UTF-8"/>\n\t</head>' > ${OUTFILE} # Entête du fichier html
-echo -e '\t<body>\n\t<p>Links table</p>\n\t\t<table>' >> ${OUTFILE}
+echo -e '\t<body>\n\t<h1>Links table</h1>\n\t\t<table border=1>' >> ${OUTFILE}
 
 
 # Test du chemin
@@ -52,7 +52,7 @@ then
         fi
 
         # Affiche les données collectées dans un fichier TSV
-        echo -e '\t\t\t<tr><td>${COUNT}</td><td>${line}</td><td>${REPHTTP}</td><td>${ENCODAGE}</td><td>${WORD}</td></tr>' >> ${OUTFILE}
+        echo -e "\t\t\t<tr><td>${COUNT}</td><td>${line}</td><td>${REPHTTP}</td><td>${ENCODAGE}</td><td>${WORD}</td></tr>" >> ${OUTFILE}
     done < "$URL" ;
 
 else
