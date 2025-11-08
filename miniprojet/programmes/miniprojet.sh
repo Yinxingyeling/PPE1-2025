@@ -2,14 +2,20 @@
 
 URL=$1
 COUNT=0
-OUTFILE="tableaux/tableau-fr.tsv" # Fichier de sauvegarde
+OUTFILE="tableaux/tableau-fr.html" # Fichier de sauvegarde
+
+# Construction du fichier html
+echo -e '<html>\n\t<head>\n\t\t<meta charset="UTF-8"/>\n\t</head>' > ${OUTFILE} # Entête du fichier html
+echo -e '\t<body>\n\t<p>Links table</p>\n\t\t<table>' >> ${OUTFILE}
+
 
 # Test du chemin
 if [ -n "$URL" ]
 then
 
     # Affiche une en-tête
-    echo -e "N°\tURL\tHTTP\tEncodage\tNb_mots" > ${OUTFILE}
+    # Première ligne du tableau
+    echo -e '\t\t\t<tr><th>Line</th><th>Link</th><th>HTTP code</th><th>Encodage</th><th>Word number</th></tr>' >> ${OUTFILE} 
 
     # Lis chaque line du fichier
     while read -r line
@@ -46,7 +52,7 @@ then
         fi
 
         # Affiche les données collectées dans un fichier TSV
-        echo -e "${COUNT}\t${line}\t${REPHTTP}\t${ENCODAGE}\t${WORD}" >> ${OUTFILE}
+        echo -e '\t\t\t<tr><td>${COUNT}</td><td>${line}</td><td>${REPHTTP}</td><td>${ENCODAGE}</td><td>${WORD}</td></tr>' >> ${OUTFILE}
     done < "$URL" ;
 
 else
@@ -54,5 +60,7 @@ else
     echo "L'argument n'est pas correct."
     exit
 fi
+
+echo -e '\t\t</table>\n\t</body>\n</html>' >> ${OUTFILE} # Fin HTML
 
 echo "Les données sont stockées dans '$OUTFILE'"
