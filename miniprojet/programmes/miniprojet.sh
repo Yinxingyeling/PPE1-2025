@@ -5,8 +5,15 @@ COUNT=0
 OUTFILE="tableaux/tableau-fr.html" # Fichier de sauvegarde
 
 # Construction du fichier html
-echo -e '<html>\n\t<head>\n\t\t<meta charset="UTF-8"/>\n\t</head>' > ${OUTFILE} # Entête du fichier html
-echo -e '\t<body>\n\t<h1>Links table</h1>\n\t\t<table border=1>' >> ${OUTFILE}
+echo -e ""
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" herf="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"/>
+    </head>
+    <body>
+        <h1>Links table</h1>
+        <table class="is-striped">"" >> ${OUTFILE}
 
 
 # Test du chemin
@@ -15,7 +22,8 @@ then
 
     # Affiche une en-tête
     # Première ligne du tableau
-    echo -e '\t\t\t<tr><th>Line</th><th>Link</th><th>HTTP code</th><th>Encodage</th><th>Word number</th></tr>' >> ${OUTFILE} 
+    echo -e "
+            <tr><th>Line</th><th>Link</th><th>HTTP code</th><th>Encodage</th><th>Word number</th></tr>" >> ${OUTFILE} 
 
     # Lis chaque line du fichier
     while read -r line
@@ -52,7 +60,8 @@ then
         fi
 
         # Affiche les données collectées dans un fichier TSV
-        echo -e "\t\t\t<tr><td>${COUNT}</td><td>${line}</td><td>${REPHTTP}</td><td>${ENCODAGE}</td><td>${WORD}</td></tr>" >> ${OUTFILE}
+        echo -e "
+            <tr><td>${COUNT}</td><td>${line}</td><td>${REPHTTP}</td><td>${ENCODAGE}</td><td>${WORD}</td></tr>" >> ${OUTFILE}
     done < "$URL" ;
 
 else
@@ -61,6 +70,9 @@ else
     exit
 fi
 
-echo -e '\t\t</table>\n\t</body>\n</html>' >> ${OUTFILE} # Fin HTML
+echo -e "
+        </table>
+    </body>
+</html>" >> ${OUTFILE} # Fin HTML
 
 echo "Les données sont stockées dans '$OUTFILE'"
