@@ -474,3 +474,100 @@ Documentation HTML
 - Affichage des variables incorrect : utilisation obligatoire des `""` et non `''`.
 - Un meilleur visuel du tableau : 
     - ajout de la fonction `border=1` dans la balise `table`
+
+## Miniprojet : pages-github (HTML et CSS)
+> 13/11/2025
+Transformer un dépôt git en site avec un fichier `.html`
+- Mettre un fichier `index.html` dans la racine du dépôt
+- Aller dans <button style="background-color:lightblue ; border-radius:8px">Settings</button> $\rightarrow$ <button style="background-color:lightblue ; border-radius: 8px">Pages</button>
+    - <i>Builds And Deployment</i>
+        - Source $\rightarrow$ <button style="border-radius: 8px ; background-color:lightgrey">Deploy from a branch</button>
+        - Branch $\rightarrow$ <button style="border-radius: 8px ; background-color:lightgrey">main</button>
+Adresse du site : https://nomutilisateur.github.io/nomdepot
+
+### Miniprojet : HTML, CSS et Bulma
+#### HTML
+
+```html
+ <!DOCTYPE html>
+ <html lang="fr">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Présentation</title>
+    </head>
+    <body>
+        <section class="section has-text-centered">
+            <h1 class="title is-1">Miniprojet</h1>
+            <div class="block">
+                <p>Le miniprojet consiste à extraire depuis un texte brut des liens URLs</p>
+            </div>
+            <button>
+                <a class="button is-dark" href="miniprojet/tableaux/tableau-fr.html">Tableau</a></li>
+            </button>
+        </section>
+    </body>
+ </html>
+```
+
+<table style="border-radius:8px ; backgroud-color:blue">
+    <tr style="background-color:lightgrey">
+        <td>Ligne avec <code>tr</code></td><td>Colonne avec <code>td</code></td>
+    </Tr>
+    <tr>
+        <td>Un style avec <code>style</code></td><td>Du code avec <code>code</code></td>
+    </Tr>
+</table>
+
+#### CSS
+3 Méthodes d'utilisation : 
+1. Directement dans les balises html : `<nomBalise style="CodeCSS : Commande">`
+
+| Code | Affichage | Explication | 
+| --- | --- | --- |
+| `<span style="color:red">Bonjour</span>` | <span style="color:red">Bonjour</span> | Couleur du texte |
+| `<... style="background-color:lightgrey>"` | <span style="background-color:lightgrey">Bonjour</span> | Couleur de fond |
+| `<button style="border-radius:8px">Clique</button>` | <button style="border-radius:8px">Clique</button> | Arrondi les coins |
+| `<... style="cursor:pointer">` | <button style="cursor:pointer">Clique</button> | Change le curseur dans la zone |
+
+2. Ajout d'une page CSS
+```html
+<!-- HTML page -->
+<head>
+    <link hel="sheetstyles" href="asset/css/style.css"/>
+</head>
+```
+```css
+/* CSS page */
+p {
+    color: darkgreen;
+    background-color: bisque;
+    border-left: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+```
+
+3. Utilisation d'un framework 
+> <a href="https://bulma.io/documentation/">Documentation Bulma</a>
+
+```html
+<!-- HTML page : Bulma -->
+<head>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/versions/bulma-no-dark-mode.min.css">
+</head>
+```
+```html
+    <body>
+        <section class="section has-text-centered">
+            <h1 class="title is-1">Miniprojet</h1>
+            <div class="block">
+                <p>Le miniprojet consiste à extraire depuis un texte brut des liens URLs</p>
+            </div>
+            <button>
+                <a class="button is-dark" href="miniprojet/tableaux/tableau-fr.html">Tableau</a></li>
+            </button>
+        </section>
+    </body>
+```

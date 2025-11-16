@@ -9,11 +9,15 @@ echo -e ""
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" herf="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"/>
+        <title>Tableau</title>
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/versions/bulma-no-dark-mode.min.css">
     </head>
     <body>
-        <h1>Links table</h1>
-        <table class="is-striped">"" >> ${OUTFILE}
+        <h1 class="title is-1">Links table</h1>
+        <div class="columns-is-centered">
+            <table class="tabs is-centered is-striped">"" >> ${OUTFILE}
 
 
 # Test du chemin
@@ -71,7 +75,8 @@ else
 fi
 
 echo -e "
-        </table>
+            </table>
+        </div>
     </body>
 </html>" >> ${OUTFILE} # Fin HTML
 
