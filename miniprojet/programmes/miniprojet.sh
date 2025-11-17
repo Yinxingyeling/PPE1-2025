@@ -5,29 +5,37 @@ COUNT=0
 OUTFILE="tableaux/tableau-fr.html" # Fichier de sauvegarde
 
 # Construction du fichier html
-echo -e ""
-<html>
+echo -e "<html>
     <head>
-        <meta charset="UTF-8"/>
+        <meta charset=\"UTF-8\"/>
         <title>Tableau</title>
+        <link rel=\"stylesheet\" href=\"../../assets/css/style.css\"/>
         <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/versions/bulma-no-dark-mode.min.css">
+        rel=\"stylesheet\"
+        href=\"https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/versions/bulma-no-dark-mode.min.css\">
     </head>
-    <body>
-        <h1 class="title is-1">Links table</h1>
-        <div class="columns-is-centered">
-            <table class="tabs is-centered is-striped">"" >> ${OUTFILE}
+    <body class=\"tableau\">
+        <div class=\"centrer\">
+            <a href=\"../../index.html\" class=\"button accueil\">Accueil</a>
+            <a class=\"button script\">Script</a>
+            <a class=\"button tablo is-focus\">Tableau</a>
+        </div>
+        <section class=\"section has-text-centered\">
+            <h1 class=\"title is-1\">Links table</h1>
+            <div class=\"columns-is-centered\">
+                <table class=\"table is-hoverable is-striped\">
+                    <tr>
+                        <th>Line</th>
+                        <th>Link</th>
+                        <th>HTTP code</th>
+                        <th>Encodage</th>
+                        <th>Word number</th>
+                    </tr>" > ${OUTFILE}
 
 
 # Test du chemin
 if [ -n "$URL" ]
 then
-
-    # Affiche une en-tête
-    # Première ligne du tableau
-    echo -e "
-            <tr><th>Line</th><th>Link</th><th>HTTP code</th><th>Encodage</th><th>Word number</th></tr>" >> ${OUTFILE} 
 
     # Lis chaque line du fichier
     while read -r line
@@ -64,8 +72,13 @@ then
         fi
 
         # Affiche les données collectées dans un fichier TSV
-        echo -e "
-            <tr><td>${COUNT}</td><td>${line}</td><td>${REPHTTP}</td><td>${ENCODAGE}</td><td>${WORD}</td></tr>" >> ${OUTFILE}
+        echo -e "               <tr>
+                        <td>${COUNT}</td>
+                        <td>${line}</td>
+                        <td>${REPHTTP}</td>
+                        <td>${ENCODAGE}</td>
+                        <td>${WORD}</td>
+                    </tr>" >> ${OUTFILE}
     done < "$URL" ;
 
 else
@@ -74,9 +87,9 @@ else
     exit
 fi
 
-echo -e "
-            </table>
-        </div>
+echo -e "               </table>
+            </div>
+        </section>
     </body>
 </html>" >> ${OUTFILE} # Fin HTML
 
