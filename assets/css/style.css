@@ -1,0 +1,60 @@
+body.tableau {
+    max-width: 800px;
+	margin: 20px auto 5px auto;
+	padding: 0;
+    padding-top: 100;
+}
+
+a.accueil {
+    border : 1px groove white;
+    font-size: 16px;
+    border-radius: 10px;
+    color: aliceblue;
+    background-color: darkblue;
+    margin-right: 25;
+}
+
+a.tablo_index:hover {
+    background: lightslategray;
+}
+
+a.accueil:hover {
+    background: royalblue;
+}
+
+a.script:hover {
+    background: rgb(233, 0, 0);
+    color : black
+}
+
+a.accueil_index {
+    border: 1px groove white;
+    font-size: 16px;
+    border-radius: 15px;
+    color: darkblue;
+    background-color: aliceblue;
+}
+
+a.script {
+    border: 1px groove white;
+    font-size: 16px;
+    color: green;
+    background-color: rgb(227, 248, 238);
+    margin-right: 25px;
+    cursor: not-allowed;
+}
+
+a.tablo {
+    border: 1px groove white;
+    font-size: 16px;
+    border-radius: 10px;
+    color: black;
+    background-color: rgb(235, 232, 232);
+
+}
+
+div.centrer {
+    margin-left: 35%;
+    padding: auto;
+    max-width: auto;
+}

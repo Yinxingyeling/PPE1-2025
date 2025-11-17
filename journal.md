@@ -518,6 +518,19 @@ Adresse du site : https://nomutilisateur.github.io/nomdepot
     </Tr>
 </table>
 
+**Différence : `section` et `div`**
+
+`section` 
+- section thématique avec du sens 
+- une partie du contenue qui a un thème, une idée complète
+- a un titre 
+
+`div`
+- conteneur neutre, purement structurel
+- est utilisé pour grouper ou styliser des éléments sans sémantique
+
+
+
 #### CSS
 3 Méthodes d'utilisation : 
 1. Directement dans les balises html : `<nomBalise style="CodeCSS : Commande">`
@@ -527,7 +540,7 @@ Adresse du site : https://nomutilisateur.github.io/nomdepot
 | `<span style="color:red">Bonjour</span>` | <span style="color:red">Bonjour</span> | Couleur du texte |
 | `<... style="background-color:lightgrey>"` | <span style="background-color:lightgrey">Bonjour</span> | Couleur de fond |
 | `<button style="border-radius:8px">Clique</button>` | <button style="border-radius:8px">Clique</button> | Arrondi les coins |
-| `<... style="cursor:pointer">` | <button style="cursor:pointer">Clique</button> | Change le curseur dans la zone |
+| `<... style="cursor:pointer">` | <button style="cursor:pointer">Clique</button> | Change le curseur en pointeur dans la zone |
 
 2. Ajout d'une page CSS
 ```html
@@ -538,17 +551,41 @@ Adresse du site : https://nomutilisateur.github.io/nomdepot
 ```
 ```css
 /* CSS page */
-p {
-    color: darkgreen;
-    background-color: bisque;
-    border-left: 10px;
-    padding: 10px;
-    margin: 10px;
+a.accueil {
+    border: 5;
+    font-size: 16;
+    border-radius: 10px;
+    color: aliceblue;
+    background-color: darkblue;
+    left: auto;
+    margin-right: 25;
 }
 ```
 
+| Code | Affichage | Explication | 
+| --- | --- | --- | 
+| `max-width : 800px` | | Largeur maximale ne dépasse pas 800 pixel |
+| `border:5px` | <button style="border:15px groove aliceblue">Exemple</button> | Le contour du button a un effet 3D creusé de 15 pixel | 
+| `border-radius:10px` | <button style="border-radius:10px">Exemple</button> |
+| `font-size:16px` | <button style="font-size:16px">Exemple</button> | La taille de police grandi entièrement à 16 pixel |
+| `color : aliceblue` | <button style="color:red">Exemple</button> | Couleur du texte |
+| `background-color: yellow"` | <button style="background-color:yellow">Exemple</button> | Couleur de fond | 
+| `margin-right: 25px` | <button style="margin-right:2px">Exemple</button> d | L'espacement externe droite prend 25 pixel |
+| `cursor: not-allowed` | <button style="cursor:not-allowed">Exemple</button> | Le curseur prend l'icone d'inaccessible |
+| `padding : auto` | <button style="padding:auto">Exemple</button> | Les spacements internes sont automatiques |
+| ` xxx:hover { background : royalblue }` | <style> button.yo:hover {background : royalblue; }</style> <button class="yo">Exemple</button> | Change la couleur de fond sous le curseur | 
+
+
 3. Utilisation d'un framework 
 > <a href="https://bulma.io/documentation/">Documentation Bulma</a>
+
+<div style="border: 4px solid red; padding: 8px;">
+<strong>⚠️ ATTENTION :</strong> L'implantation de Bulma n'a pas de <code>\</code> en fin de balise
+<p> <code><</code><code>link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/versions/bulma-no-dark-mode.min.css"></code></p>
+Cependant l'implantation pour notre feuille CSS, il y a besoin de <code>\</code> en fin de balise 
+<p><code><</code><code>link rel="stylesheet" href="../../assets/css/style.css"/></code></p>
+</div>
+<br>
 
 ```html
 <!-- HTML page : Bulma -->
@@ -571,3 +608,13 @@ p {
         </section>
     </body>
 ```
+
+| Code | Explication | 
+| --- | --- |
+| `class="button"` | Prend les caractères d'un `<button>` |
+| `class="section"` | Forme des sections (paragraphes) |
+| `class=has-text-centered"` | Centralise le texte |
+| `class="title is-1` | Prend la police Titre de niveau 1 |
+| `class="block"` | Crée un block (paragraphe) |
+|  `class="is-dark` | La couleur du fond devient noir et la police blanche |
+| `class="table` <br> `is-hoverable` <br> `is-striped"` | Un tableau mieux formaté <br> La ligne sous la sourie est grisée <br> Tous les deux lignes, la ligne est grisée |
