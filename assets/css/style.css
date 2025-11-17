@@ -11,7 +11,7 @@ a.accueil {
     border-radius: 10px;
     color: aliceblue;
     background-color: darkblue;
-    margin-right: 25;
+    margin-right: 25px;
 }
 
 a.tablo_index:hover {
@@ -33,6 +33,7 @@ a.accueil_index {
     border-radius: 15px;
     color: darkblue;
     background-color: aliceblue;
+    margin-right: 25px;
 }
 
 a.script {
